@@ -5,13 +5,19 @@ const NavBar = () => {
 
     return(
             <nav className="navbar">
-                <ul>
-                    <li><Link to='/' className="lista">Home</Link></li>
-                    <li><Link to='/platillos' className="lista">Platillos</Link></li>
-                    <li><Link to='/bebidas'  className="lista">Bebidas</Link></li>
-                    <li><Link to='/recibo' className="lista">Recibo</Link></li>
-                    <li><Link to='/ajustes' className="lista">Ajustes</Link></li>
-                </ul>
+                <div className="menu-principal">
+                    <Link to='/' className="lista">Home</Link>
+                </div>
+
+                <div className="opciones">
+                    <Link to='/platillos' className="lista">Platillos</Link>
+                    <Link to='/bebidas'  className="lista">Bebidas</Link>
+                </div>
+
+                <div className="funciones">
+                    <Link to='/recibo' className="lista">Recibo</Link>
+                    <Link to='/ajustes' className="lista">Ajustes</Link>
+                </div>
             </nav>
     );
 };

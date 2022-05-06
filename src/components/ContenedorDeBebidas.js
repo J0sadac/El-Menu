@@ -36,7 +36,6 @@ const ContenedorDeBebidas = () => {
         };
 
         return(
-            <div className='contenedor'>
                 <div className="contenedor-platillo" key={platillo.id}>
                     <Imagen 
                         imagen={platillo.imagen}
@@ -55,8 +54,6 @@ const ContenedorDeBebidas = () => {
                         />
                     </div>
                 </div>
-            </div>
-
         );
     });
     

@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Bienvenido, esperamos que disfurtes nuestros platillos!",
+  "short_name": "El Menu",
+  "name": "Disfruta de los mejores platilos",
   "icons": [
     {
       "src": "favicon.ico",
