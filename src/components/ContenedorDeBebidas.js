@@ -32,7 +32,14 @@ const ContenedorDeBebidas = () => {
     var MenuBebidas = platillo.map((platillo) => {
         
         const agregar = () => {
-            alert(`Se añadio ${platillo.nombre}`)
+            var bebida = {
+                id: platillo.id,
+                nombre: platillo.nombre,
+                precio: platillo.precio,
+                imagen: platillo.imagen,
+            }
+
+            alert(bebida.nombre)
         };
 
         return(
