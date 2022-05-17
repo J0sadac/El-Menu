@@ -35,10 +35,24 @@ const ContenedorDeBebidas = () => {
     ];
 
     
+    /*const addCarrito = (id) => {
+        const filtro = reciboState.every((bebida) => {
+            return bebida.id !== id;
+        })
+
+        if(filtro){
+            const datos = platillo.filter((platillo) => {
+                return platillo.id === id
+            })
+            useReciboState([...reciboState, datos])
+        }else{
+            alert("Este producto ya a sido agregado")
+        }
+    }*/
     
     let MenuBebidas = platillo.map((platillo) => {
-        
-        const agregar = () => {
+
+        let agregar = () => {
             let bebida = {
                 id: new Date().getTime(),
                 nombre: platillo.nombre,

@@ -6,37 +6,51 @@ import Boton from './herramientas/Boton'
 import Chile from '../image/comidas/chile.jpg'
 import Mole from '../image/comidas/mole.jpg'
 import Pozole from '../image/comidas/pozole.jpg'
+import { AlmacenEnLocalStorage } from "./herramientas/AlmacenEnLocalStorage";
 
 const ContenedorPlatillo = () => {
     let platillo = [
         {
-            id: 1,
+            id: 4,
             imagen: Chile,
             nombre: "Chile",
             precio: 40,
+            cantidad: 1
         },
         {
-            id: 2,
+            id: 5,
             imagen: Mole,
             nombre: "Mole",
             precio: 90,
+            cantidad: 1
         },
         {
-            id: 3,
+            id: 6,
             imagen: Pozole,
             nombre: "Pozole",
             precio: 80,
+            cantidad: 1
         }
     ];
-
-    var MenuPlatillos = platillo.map((platillo) => {
+    
+    let MenuPlatillos = platillo.map((platillo) => {
         
-        const agregar = () => {
-            alert(`Se añadio ${platillo.nombre}`)
-        };
-
+        let agregar = () => {
+            let bebida = {
+                id: new Date().getTime(),
+                nombre: platillo.nombre,
+                precio: platillo.precio,
+                cantidad: platillo.cantidad,
+            };
+    
+        
+            AlmacenEnLocalStorage('Bebidas', bebida);
+        
+            console.log(bebida);
+        }
+        
         return(
-                <div className="contenedor-platillo" key={platillo.id}>
+            <div className="contenedor-platillo" key={platillo.id}>
                     <Imagen 
                         imagen={platillo.imagen}
                         styles={"platillo-img"}
@@ -50,7 +64,7 @@ const ContenedorPlatillo = () => {
                         <Boton 
                             nombre='Agregar'
                             styles='platillo-boton'
-                            funcion={agregar}
+                            funcion={() => agregar(platillo.id)}
                         />
                     </div>
                 </div>

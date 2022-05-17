@@ -4,11 +4,22 @@ import Boton from './herramientas/Boton';
 //import Bebidas from './ContenedorDeBebidas';
 
 const Recibo = () => {
+    const [total, setTotal] = useState(0);
+    const [reciboState, useReciboState] = useState ([]);
+
     useEffect(() => {
         ObtenerDatos();
     }, []);
-
-    const [reciboState, useReciboState] = useState ([]);
+    
+    useEffect(() => {
+        const PrecioTotal = () => {
+            const sumaTotal = reciboState.reduce((prev, bebida) => {
+                return prev + (bebida.precio * bebida.cantidad);
+            }, 0)
+            setTotal(sumaTotal);
+        }
+        PrecioTotal()
+    }, [reciboState])
 
     const ObtenerDatos = () => {
         //recogemos los datos que almacenamos en el localstorage
@@ -31,9 +42,31 @@ const Recibo = () => {
         localStorage.setItem('Bebidas', JSON.stringify(nuevoArrayDeBebidas));
       }
 
-    
+    const Resta = (id) => {
+        reciboState.forEach((bebida) => {
+            if(bebida.id === id){
+                bebida.cantidad === 1 ? bebida.cantidad = 1: bebida.cantidad -=1;
+            }
+        })
+        useReciboState([...reciboState])
+               
+    };
 
-    let peticion = reciboState != null ?
+    const Suma = (id) => {
+        reciboState.forEach((bebida) => {
+            if(bebida.id === id){
+                bebida.cantidad +=1;
+            }
+        })
+        useReciboState([...reciboState])
+
+    };
+
+    const Comprar = () =>{ 
+        alert("Tu compra se a realizado con exito")
+    }
+
+    let peticion = reciboState !== null ?
         reciboState.map((bebida) => {
 
             return(
@@ -44,14 +77,16 @@ const Recibo = () => {
                     <div className='cantidad'>
                         <Boton
                             nombre='-'
+                            funcion={() => Resta(bebida.id)}
                         />
                         <p>{bebida.cantidad}</p>
                         <Boton
                             nombre='+'
+                            funcion={() => Suma(bebida.id)}
                         />
                     </div>
 
-                    <p className='precio-recibo'>${bebida.precio}</p>
+                    <p className='precio-recibo'>${(bebida.precio * bebida.cantidad)}</p>
 
                     <Boton 
                         nombre='Eliminar'
@@ -73,9 +108,10 @@ const Recibo = () => {
             {peticion}
             <div className='pagar'>
                 <h3>Total</h3>
-                <p>$300</p>
+                <p>{total}</p>
                 <Boton
                     nombre='Comprar'
+                    funcion={Comprar}
                 />
             </div>
         </div>
