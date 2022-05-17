@@ -12,19 +12,24 @@ const Router = () => {
 
     return(
         <BrowserRouter>
-            <NavBar />
-            <Routes>
-                <Route exact path='/'
-                        element={<>
-                                    <Platillos />
-                                    <Bebidas />       
-                                </>} />
-                                
-                <Route exact path='/platillos' element={<Platillos />} />
-                <Route exact path='/bebidas' element={<Bebidas />} />
-                <Route exact path='/recibo' element={<Recibo />} />
-                <Route exact path='/ajustes' element={<Ajustes />} />
-            </Routes>
+            <header>
+                <NavBar />
+            </header>
+            
+            <section>
+                <Routes>
+                    <Route exact path='/'
+                            element={<>
+                                        <Platillos />
+                                        <Bebidas />       
+                                    </>} />
+                                    
+                    <Route exact path='/platillos' element={<Platillos />} />
+                    <Route exact path='/bebidas' element={<Bebidas />} />
+                    <Route exact path='/recibo' element={<Recibo />} />
+                    <Route exact path='/ajustes' element={<Ajustes />} />
+                </Routes>
+            </section>
 
         </BrowserRouter>
     );

@@ -6,41 +6,52 @@ import Boton from './herramientas/Boton'
 import Fresa from '../image/bebidas/fresa.jpg'
 import Cacahuate from '../image/bebidas/cacahuate.jpg'
 import Arroz from '../image/bebidas/arroz.jpg'
+import { AlmacenEnLocalStorage } from "./herramientas/AlmacenEnLocalStorage";
 
 const ContenedorDeBebidas = () => {
+
     let platillo = [
         {
             id: 1,
             imagen: Fresa,
             nombre: "Horchata de Fresa",
             precio: 15,
+            cantidad: 1
         },
         {
             id: 2,
             imagen: Cacahuate,
             nombre: "Horchata de Cacahuate",
             precio: 15,
+            cantidad: 1
         },
         {
             id: 3,
             imagen: Arroz,
             nombre: "Horchata de Arroz",
             precio: 15,
+            cantidad: 1
         }
     ];
 
-    var MenuBebidas = platillo.map((platillo) => {
+    
+    
+    let MenuBebidas = platillo.map((platillo) => {
         
         const agregar = () => {
-            var bebida = {
-                id: platillo.id,
+            let bebida = {
+                id: new Date().getTime(),
                 nombre: platillo.nombre,
                 precio: platillo.precio,
-                imagen: platillo.imagen,
-            }
+                cantidad: platillo.cantidad,
+            };
 
-            alert(bebida.nombre)
-        };
+        
+                AlmacenEnLocalStorage('Bebidas', bebida);
+        
+                console.log(bebida);
+            
+        }
 
         return(
                 <div className="contenedor-platillo" key={platillo.id}>
@@ -57,12 +68,13 @@ const ContenedorDeBebidas = () => {
                         <Boton 
                             nombre='Agregar'
                             styles='platillo-boton'
-                            funcion={agregar}
+                            funcion={() => agregar(platillo.id)}
                         />
                     </div>
                 </div>
         );
     });
+
     
     return(
          <Fragment>
