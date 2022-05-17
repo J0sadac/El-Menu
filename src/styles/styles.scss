@@ -92,6 +92,7 @@ body{
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+    align-items: center;
 
     background-color: black;
 
@@ -107,6 +108,14 @@ body{
     padding-top: 15px;
     padding-left: 12px;
     padding-bottom: 13px;
+
+    .menu-principal{
+        .lista{
+            .img-navbar{
+                width: 40px;
+            }
+        }
+    }
 
     .funciones{
         margin-right: 20px;
